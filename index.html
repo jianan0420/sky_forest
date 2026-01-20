@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光遇－雨林｜互動作品</title>
+
+<style>
+body {
+  margin: 0;
+  background: #111;
+  color: #fff;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+h1, p {
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.bg {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.hotspot {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 外圈 */
+.hotspot::before {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #2cadf6;
+  opacity: 0.9;
+  animation: pulse 2s infinite;
+}
+
+/* 內圈白點 */
+.hotspot::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  70% { transform: scale(1.6); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.hotspot:hover {
+  transform: scale(1.2);
+}
+
+/* 遮罩 */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* 彈出視窗 */
+.modal {
+  background: #1e1e1e;
+  max-width: 600px;
+  width: 90%;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+}
+
+.modal h2 {
+  margin-top: 0;
+}
+
+.modal .content > div {
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #fff;
+  border-radius: 12px;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 背景圖片暗化遮罩 */
+.modal .content > div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+
+/* 讓文字在遮罩上方 */
+.modal .content h2,
+.modal .content p,
+.modal .content a,
+.modal .content audio {
+  position: relative;
+  z-index: 2;
+}
+
+.modal .content h2 {
+  margin-top: 0;
+  font-size: 1.8em;
+}
+
+.modal .content p {
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+.modal .content a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: #fff;
+  color: #222;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.modal .content a:hover {
+  background: #2cadf6;
+  color: #fff;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+a { color: #4fc3f7; }
+
+iframe {
+  width: 100%;
+  height: 360px;
+  border: none;
+  border-radius: 8px;
+}
+
+.placeholder {
+  background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+  width: 100%;
+  height: 360px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 1.1em;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <img class="bg"
+    src="https://thinglink-data-prod.s3.eu-west-1.amazonaws.com/scene/1984886310795477860/4484416447a88abadf6c7f77b11e18b7/image.jpg">
+
+  <div class="hotspot" style="left:46%; top:54%;" onclick="openModal('candle')">1</div>
+  <div class="hotspot" style="left:83%; top:85%;" onclick="openModal('rain')">2</div>
+  <div class="hotspot" style="left:8%; top:9%;" onclick="openModal('model')">3</div>
+</div>
+
+<!-- Modal -->
+<div id="overlay" class="overlay" onclick="closeModal(event)">
+  <div class="modal">
+
+    <span class="close" onclick="closeModal()">✕</span>
+
+	<div id="candle" class="content">
+	    <div style="
+		  background-image:url('https://thinglink-data-prod.s3.eu-west-1.amazonaws.com/scene/1984886310795477860/0063a91ac0322a71742f8e8cf063f238/image.jpg');
+	    ">
+			<h2>蠟燭</h2>
+			<p>
+			用來在《光遇》這個遊戲中購買各種道具、魔法的寶貴貨幣。
+			玩家可以在遊戲地圖中找尋蠟燭，收集燭火後累積一定的量，
+			兌換成能實際使用的一根蠟燭，是遊戲中非常重要的資源。
+			</p>
+			<a href="https://agame01.com/article/485787/" target="_blank">《光遇》蠟燭作用介紹大全</a>
+	    </div>
+	</div>
+
+	<div id="rain" class="content" style="display:none;">
+		<div style="background-image:url('https://thinglink-data-prod.s3.eu-west-1.amazonaws.com/scene/1984886310795477860/2dda1ee464e4fb93e00f39989cc76d48/image.jpg');">
+			<h2>雨林</h2>
+			<p>
+			  總是下雨的地圖，玩家在此地圖要小心！人物淋雨會掉能量，不僅會導致飛不起來，
+			  還有可能失去寶貴的光翼。雖然在這裡玩家需要躲雨，相當不方便，但這張圖特有的bgm
+			  搭配遊戲中的雨聲非常療癒，仍然使許多玩家喜歡到此地放鬆心靈。
+			</p>
+			<audio id="rainAudio">
+			  <source src="https://thinglink-data-prod.s3.eu-west-1.amazonaws.com/scene/1984886310795477860/90369318df76b11938355c33b799855c/audio.mp3" type="audio/mpeg">
+			</audio>
+			<a href="https://wiki.biligame.com/sky/%E9%9B%A8%E6%9E%97" target="_blank">光遇 - 雨林</a>
+	    </div>
+	</div>
+
+    <div id="model" class="content" style="display:none; text-align: center;">
+      <h2>3D 模型</h2>
+	  <iframe title="S1222110黃建安_3D校徽" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/274aa59e95ee40d9a9ca748ca40cbb7f/embed?ui_theme=dark&ui_controls=0&ui_infos=0&ui_watermark=0&ui_watermark_link=false" width="100%" height="400" style="border-radius: 8px;"></iframe>
+	</div>  
+
+  </div>
+</div>
+
+<script>
+function openModal(id) {
+  document.getElementById('overlay').style.display = 'flex';
+  document.querySelectorAll('.content').forEach(c => c.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+
+  // 如果是雨林，播放音樂
+  if (id === 'rain') {
+    const audio = document.getElementById('rainAudio');
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play();
+    }
+  }
+}
+
+function closeModal(e) {
+  if (!e || e.target.id === 'overlay') {
+    document.getElementById('overlay').style.display = 'none';
+
+    // 關閉時暫停雨林音樂
+    const audio = document.getElementById('rainAudio');
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  }
+}
+</script>
+
+</body>
+</html>
